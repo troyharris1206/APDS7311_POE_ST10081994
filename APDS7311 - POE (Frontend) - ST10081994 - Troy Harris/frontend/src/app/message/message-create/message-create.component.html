@@ -1,0 +1,79 @@
+<style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  
+    .form-container {
+      max-width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+  
+    input,
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  
+    button {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+
+<!-- Form for adding a new message -->
+<div class="container">
+  <div class="form-container">
+    <form (submit)="onAddMessage(addMessage)" #addMessage="ngForm">
+
+      <!-- Input for message title -->
+      <input type="text"
+             ngModel name="enteredTitle"
+             placeholder="Message Title"
+             required minlength="1"
+             pattern="^[a-zA-Z0-9\s_-]+$"
+             #enteredTitle="ngModel" />
+      <div *ngIf="enteredTitle.invalid && (enteredTitle.dirty || enteredTitle.touched)">Invalid</div>
+
+      <!-- Input for message body -->
+      <input type="text"
+             ngModel name="enteredBody"
+             placeholder="Message Body"
+             required minlength="1"
+             pattern="^[a-zA-Z0-9\s_-]+$"
+             #enteredBody="ngModel" />
+      <div *ngIf="enteredBody.invalid && (enteredBody.dirty || enteredBody.touched)">Invalid</div>
+
+      <!-- Input for message date/time -->
+      <input type="text"
+             ngModel name="enteredDateTime"
+             placeholder="Message Date/Time"
+             required minlength="1"
+             pattern="^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4} (?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)$"
+             #enteredDateTime="ngModel" />
+      <div *ngIf="enteredDateTime.invalid && (enteredDateTime.dirty || enteredDateTime.touched)">Invalid Format: mm/dd/yyyy HH:mm:ss</div>
+
+      <!-- Input for message importance -->
+      <input type="text"
+             ngModel name="enteredImportance"
+             placeholder="Message Importance"
+             required minlength="1"
+             pattern="^[a-zA-Z0-9\s_-]+$"
+             #enteredImportance="ngModel" />
+      <div *ngIf="enteredImportance.invalid && (enteredImportance.dirty || enteredImportance.touched)">Invalid</div>
+
+      <!-- Button to submit the form -->
+      <button type="submit">Add Message</button>
+    </form>
+  </div>
+</div>

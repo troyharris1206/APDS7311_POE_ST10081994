@@ -1,0 +1,86 @@
+<!-- Styling for the form -->
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .form-container {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+
+  input,
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+</style>
+
+<!-- Signup Form -->
+<div class="container">
+  <div class="form-container">
+    <form (submit)="onSignup(signupform)" #signupform="ngForm">
+      
+      <!-- Username Input -->
+      <input type="text"
+             ngModel name="enteredusername"
+             placeholder="Username"
+             required minlength="1"
+             pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+             #enteredUsername="ngModel"/>
+      <div *ngIf="enteredUsername.invalid && (enteredUsername.dirty || enteredUsername.touched)">Invalid</div>
+      <br>
+
+      <!-- First Name Input -->
+      <input type="text"
+             ngModel name="enteredfirstname"
+             placeholder="First Name"
+             required minlength="1"
+             pattern="^[a-zA-Z0-9\s_-]+$"
+             #enteredFirstName="ngModel"/>
+      <div *ngIf="enteredFirstName.invalid && (enteredFirstName.dirty || enteredFirstName.touched)">Invalid</div>
+      <br>
+
+      <!-- Last Name Input -->
+      <input type="text"
+             ngModel name="enteredlastname"
+             placeholder="Last Name"
+             required minlength="1"
+             pattern="^[a-zA-Z0-9\s_-]+$"
+             #enteredLastName="ngModel"/>
+      <div *ngIf="enteredLastName.invalid && (enteredLastName.dirty || enteredLastName.touched)">Invalid</div>
+      <br>
+
+      <!-- Password Input -->
+      <input type="password" name="password" [(ngModel)]="password"
+             placeholder="Password" required minlength="8"
+             pattern="^([a-zA-Z0-9@*#]{8,15})$"
+             #passwordRef="ngModel" />
+      <div *ngIf="passwordRef?.invalid && (passwordRef?.dirty || passwordRef?.touched)">
+        <div *ngIf="passwordRef?.errors?.['required']">Please enter a password.</div>
+        <div *ngIf="passwordRef?.errors?.['minlength']">Password should be 8 characters or longer.</div>
+        <div *ngIf="passwordRef?.errors?.['pattern']">Only letters, numbers, and special characters are allowed.</div>
+      </div>
+      <br>
+
+      <!-- Signup Button -->
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        main {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        nav a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        router-outlet {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div>
+            <h1>Welcome to the government bulletin board</h1>
+            <p>Please login or signup to continue </p>
+
+            <nav>
+                <a routerLink="/Login">Login</a>
+                <a routerLink="/Signup">Signup</a>
+                <a routerLink="/Messages">View Messages</a>
+                <a routerLink="/Add">Add Messages</a>
+            </nav>
+            
+            
+            <br>
+
+            <!-- This is where the route gets displayed -->
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</body>
+</html>

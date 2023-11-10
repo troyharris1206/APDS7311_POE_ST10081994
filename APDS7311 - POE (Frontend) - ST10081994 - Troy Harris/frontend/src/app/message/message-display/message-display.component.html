@@ -1,0 +1,19 @@
+<p style="text-decoration: underline;">Message Issues</p>
+
+<!-- Loop through each message in the messages array -->
+<div *ngFor="let message of messages">
+    <!-- Display the underlined Issue Title with actual title from the message -->
+    <p style="text-decoration: underline;">Issue Title:</p><p>  {{message.title}} </p>
+    
+    <!-- Display the underlined Issue Description with actual body content from the message -->
+    <p style="text-decoration: underline;">Issue Description:</p><p> {{message.body}} </p>
+    
+    <!-- Display the underlined Logged Date/Time with actual dateTime from the message -->
+    <p style="text-decoration: underline;">Logged Date/Time:</p><p> {{message.dateTime}} </p>
+    
+    <!-- Display the underlined Issue Importance with actual importance from the message -->
+    <p style="text-decoration: underline;">Issue Importance:</p><p> {{message.importance}} </p>    
+    
+    <!-- Button to trigger onDelete method with the specific message ID -->
+    <button (click)="onDelete(message._id)">Delete Message</button>
+</div>
